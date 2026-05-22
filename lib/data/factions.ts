@@ -85,7 +85,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "vagabond",
     name: "Vagabond",
-    nameES: "Vagabundo",
+    nameES: "El Vagabundo",
     reach: 5,
     type: "insurgent",
     expansion: "base",
@@ -153,7 +153,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "vagabond-2",
     name: "Vagabond (Second)",
-    nameES: "Vagabundo (Segundo)",
+    nameES: "El Vagabundo",
     reach: 2,
     type: "insurgent",
     expansion: "riverfolk",

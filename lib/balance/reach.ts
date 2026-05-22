@@ -82,7 +82,7 @@ export function validateBalance(
       const fa = getFaction(a)!;
       const fb = getFaction(b)!;
       errors.push(
-        `${fa.name} and ${fb.name} cannot be played in the same game (official rule).`
+        `${fa.nameES ?? fa.name} y ${fb.nameES ?? fb.name} no pueden jugarse en la misma partida (regla oficial).`
       );
     }
   }
@@ -90,29 +90,22 @@ export function validateBalance(
   // Hard error: faction count mismatch
   if (factions.length !== playerCount) {
     errors.push(
-      `Selected ${factions.length} factions, but ${playerCount} players.`
+      `Seleccionaste ${factions.length} facciones para ${playerCount} jugadores.`
     );
   }
 
   // Hard error: not enough militants
   if (militantCount < minMilitants) {
     errors.push(
-      `Need at least ${minMilitants} militant faction${
-        minMilitants > 1 ? "s" : ""
-      } for ${playerCount} players (currently ${militantCount}).`
+      `Se necesita${minMilitants > 1 ? "n" : ""} al menos ${minMilitants} facción${minMilitants > 1 ? "es militantes" : " militante"} para ${playerCount} jugadores (actualmente ${militantCount}).`
     );
   }
 
   // Soft warning: reach below recommended
   if (totalReach < recommendedReach) {
     warnings.push(
-      `Total Reach (${totalReach}) is below the recommended ${recommendedReach} for ${playerCount} players. Game may feel quiet.`
+      `El Reach total (${totalReach}) está por debajo del mínimo recomendado de ${recommendedReach} para ${playerCount} jugadores. La partida puede sentirse lenta.`
     );
-  }
-
-  // Soft warning: all insurgents in 3+ player game
-  if (playerCount >= 3 && militantCount === 1 && insurgentCount >= 2) {
-    // Acceptable but worth noting
   }
 
   // Soft warning: known unbalanced combinations
@@ -122,7 +115,7 @@ export function validateBalance(
     (ids.includes("vagabond") || ids.includes("vagabond-2"))
   ) {
     warnings.push(
-      "Lord of the Hundreds and Vagabond compete for items — both may feel weaker than usual."
+      "El Señor de los Cientos y el Vagabundo compiten por los mismos objetos — ambos pueden sentirse más débiles de lo normal."
     );
   }
 

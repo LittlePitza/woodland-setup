@@ -67,7 +67,7 @@ export function generateBalancedSetup(opts: GeneratorOptions): Faction[] {
 
   if (playerCount < 2 || playerCount > 6) {
     throw new NoValidCombinationError(
-      `Player count must be 2-6 (got ${playerCount}).`
+      `El número de jugadores debe ser entre 2 y 6 (recibido: ${playerCount}).`
     );
   }
 
@@ -81,7 +81,7 @@ export function generateBalancedSetup(opts: GeneratorOptions): Faction[] {
 
   if (pool.length < playerCount) {
     throw new NoValidCombinationError(
-      `Only ${pool.length} factions available for ${playerCount} players. Enable more expansions.`
+      `Solo hay ${pool.length} facciones disponibles para ${playerCount} jugadores. Activa más expansiones.`
     );
   }
 
@@ -97,7 +97,7 @@ export function generateBalancedSetup(opts: GeneratorOptions): Faction[] {
     const f = pool.find((p) => p.id === id);
     if (!f) {
       throw new NoValidCombinationError(
-        `Pinned faction "${id}" is not in the allowed pool.`
+        `La facción fijada "${id}" no está en el pool disponible.`
       );
     }
     pinned.push(f);
@@ -105,14 +105,14 @@ export function generateBalancedSetup(opts: GeneratorOptions): Faction[] {
 
   if (pinned.length > playerCount) {
     throw new NoValidCombinationError(
-      `Pinned ${pinned.length} factions but only ${playerCount} players.`
+      `Tienes ${pinned.length} facciones fijadas pero solo ${playerCount} jugadores.`
     );
   }
 
   // Check pinned for exclusions
   if (findExclusionConflicts(pinned).length > 0) {
     throw new NoValidCombinationError(
-      "Pinned factions have mutual exclusion conflicts."
+      "Las facciones fijadas tienen conflictos de exclusión entre sí."
     );
   }
 
@@ -148,7 +148,7 @@ export function generateBalancedSetup(opts: GeneratorOptions): Faction[] {
   }
 
   throw new NoValidCombinationError(
-    "Could not find a valid faction combination with the given constraints. Try enabling more expansions or unbanning factions."
+    "No se encontró una combinación válida con las restricciones actuales. Intenta activar más expansiones o quitar facciones excluidas."
   );
 }
 

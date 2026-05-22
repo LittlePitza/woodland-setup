@@ -147,7 +147,7 @@ describe("validateBalance", () => {
       ],
       4
     );
-    expect(result.errors.some((e) => e.includes("cannot be played"))).toBe(
+    expect(result.errors.some((e) => e.includes("no pueden jugarse"))).toBe(
       true
     );
   });
