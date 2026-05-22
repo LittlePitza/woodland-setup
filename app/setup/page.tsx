@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useWizardStore } from "@/lib/store";
 import { PlayerCountStep } from "@/components/setup/PlayerCountStep";
 import { ExpansionsStep } from "@/components/setup/ExpansionsStep";
@@ -10,6 +11,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function SetupPage() {
   const step = useWizardStore((s) => s.step);
+  const reset = useWizardStore((s) => s.reset);
+
+  // Siempre empezar desde cero al entrar a la página
+  useEffect(() => {
+    reset();
+  }, [reset]);
 
   const steps = [
     <PlayerCountStep key="players" />,
