@@ -19,7 +19,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "marquise-de-cat",
     name: "Marquise de Cat",
-    nameES: "Marquesa Gato",
+    nameES: "El Marquesado",
     reach: 10,
     type: "militant",
     expansion: "base",
@@ -41,7 +41,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "eyrie-dynasties",
     name: "Eyrie Dynasties",
-    nameES: "Dinastías del Nido",
+    nameES: "El Nido de Águilas",
     reach: 7,
     type: "militant",
     expansion: "base",
@@ -63,7 +63,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "woodland-alliance",
     name: "Woodland Alliance",
-    nameES: "Alianza del Bosque",
+    nameES: "La Alianza",
     reach: 3,
     type: "insurgent",
     expansion: "base",
@@ -109,7 +109,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "riverfolk-company",
     name: "Riverfolk Company",
-    nameES: "Compañía Ribereña",
+    nameES: "La Compañía del Río",
     reach: 5,
     type: "insurgent",
     expansion: "riverfolk",
@@ -131,7 +131,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "lizard-cult",
     name: "Lizard Cult",
-    nameES: "Culto Lagarto",
+    nameES: "El Culto Reptiliano",
     reach: 2,
     type: "insurgent",
     expansion: "riverfolk",
@@ -177,7 +177,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "underground-duchy",
     name: "Underground Duchy",
-    nameES: "Ducado Subterráneo",
+    nameES: "El Ducado Subterráneo",
     reach: 8,
     type: "militant",
     expansion: "underworld",
@@ -199,7 +199,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "corvid-conspiracy",
     name: "Corvid Conspiracy",
-    nameES: "Conspiración Córvida",
+    nameES: "La Conspiración Córvida",
     reach: 3,
     type: "insurgent",
     expansion: "underworld",
@@ -223,7 +223,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "lord-of-the-hundreds",
     name: "Lord of the Hundreds",
-    nameES: "Señor de los Cientos",
+    nameES: "El Señor de los Cientos",
     reach: 9,
     type: "militant",
     expansion: "marauder",
@@ -245,7 +245,7 @@ export const FACTIONS: Faction[] = [
   {
     id: "keepers-in-iron",
     name: "Keepers in Iron",
-    nameES: "Guardianes de Hierro",
+    nameES: "Los Guardianes del Hierro",
     reach: 8,
     type: "militant",
     expansion: "marauder",
@@ -269,7 +269,8 @@ export const FACTIONS: Faction[] = [
   {
     id: "lilypad-diaspora",
     name: "Lilypad Diaspora",
-    nameES: "Diáspora del Nenúfar",
+    // Sin edición oficial en español — se mantiene en inglés
+    nameES: "Lilypad Diaspora",
     reach: 7,
     type: "militant",
     expansion: "homeland",
@@ -291,7 +292,8 @@ export const FACTIONS: Faction[] = [
   {
     id: "twilight-council",
     name: "Twilight Council",
-    nameES: "Concilio del Crepúsculo",
+    // Sin edición oficial en español — se mantiene en inglés
+    nameES: "Twilight Council",
     reach: 4,
     type: "insurgent",
     expansion: "homeland",
@@ -313,7 +315,8 @@ export const FACTIONS: Faction[] = [
   {
     id: "knaves-of-the-deepwood",
     name: "Knaves of the Deepwood",
-    nameES: "Bribones del Bosque Profundo",
+    // Sin edición oficial en español — se mantiene en inglés
+    nameES: "Knaves of the Deepwood",
     reach: 4,
     type: "insurgent",
     expansion: "homeland",

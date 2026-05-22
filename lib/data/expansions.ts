@@ -3,36 +3,37 @@ import type { Expansion } from "@/types";
 export const EXPANSIONS: Expansion[] = [
   {
     id: "base",
-    name: "Root (Base Game)",
-    nameES: "Root (Juego Base)",
+    name: "Root",
+    nameES: "Root",
     year: 2018,
     factionCount: 4,
   },
   {
     id: "riverfolk",
     name: "The Riverfolk Expansion",
-    nameES: "La Expansión Ribereña",
+    nameES: "Los Ribereños",
     year: 2018,
     factionCount: 3,
   },
   {
     id: "underworld",
     name: "The Underworld Expansion",
-    nameES: "La Expansión del Inframundo",
+    nameES: "Los Subterráneos",
     year: 2020,
     factionCount: 2,
   },
   {
     id: "marauder",
     name: "The Marauder Expansion",
-    nameES: "La Expansión Saqueadora",
+    nameES: "Los Merodeadores",
     year: 2022,
     factionCount: 2,
   },
   {
     id: "homeland",
     name: "The Homeland Expansion",
-    nameES: "La Expansión del Hogar",
+    // Sin edición oficial en español aún — se mantiene en inglés
+    nameES: "The Homeland Expansion",
     year: 2025,
     factionCount: 3,
   },
