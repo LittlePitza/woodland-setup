@@ -3,14 +3,22 @@ import { getFaction } from "@/lib/data/factions";
 
 /**
  * Recommended minimum total Reach by player count.
- * Source: The Law of Root §5.2 (3rd printing).
+ * Source: The Law of Root §5.2 — therootdatabase.com, updated March 2026.
+ *
+ * | Players | Viable Reach |
+ * |---------|-------------|
+ * |    2    |    17+      |
+ * |    3    |    18+      |
+ * |    4    |    21+      |
+ * |    5    |    25+      |
+ * |    6    |    28+      |
  */
 export const RECOMMENDED_REACH: Record<number, number> = {
-  2: 21,
+  2: 17,
   3: 18,
-  4: 17,
-  5: 17,
-  6: 17,
+  4: 21,
+  5: 25,
+  6: 28,
 };
 
 /**

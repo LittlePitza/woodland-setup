@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { FACTIONS } from "@/lib/data/factions";
+import { useI18n } from "@/lib/i18n/context";
+import { LangToggle } from "@/components/shared/LangToggle";
 
 export default function HomePage() {
+  const { t } = useI18n();
   const symbolRow = FACTIONS.slice(0, 7).map((f) => f.symbol);
   const symbolRow2 = FACTIONS.slice(7, 14).map((f) => f.symbol);
 
@@ -18,19 +23,26 @@ export default function HomePage() {
           <span className="text-bark mr-2">❦</span>
           Woodland Setup
         </div>
-        <div className="flex items-center gap-4 text-sm font-ui">
+        <div className="flex items-center gap-3 text-sm font-ui">
+          <Link
+            href="/combinations"
+            className="text-ink-muted hover:text-ink transition-colors hidden sm:inline"
+          >
+            {t("nav_combinations")}
+          </Link>
           <Link
             href="/factions"
             className="text-ink-muted hover:text-ink transition-colors hidden sm:inline"
           >
-            Facciones
+            {t("nav_factions")}
           </Link>
           <Link
             href="/history"
             className="text-ink-muted hover:text-ink transition-colors"
           >
-            Historial
+            {t("nav_history")}
           </Link>
+          <LangToggle />
         </div>
       </nav>
 
@@ -44,19 +56,18 @@ export default function HomePage() {
         </div>
 
         <p className="font-ui text-xs uppercase tracking-[0.4em] text-ink-muted mb-4">
-          Un compañero para Root
+          {t("home_companion")}
         </p>
 
         <h1 className="font-display text-5xl sm:text-7xl text-ink leading-[0.95] mb-6">
-          Que el bosque
+          {t("home_headline1")}
           <br />
-          <span className="italic text-rust">decida</span> por ti
+          <span className="italic text-rust">{t("home_headline2")}</span>{" "}
+          {t("home_headline3")}
         </h1>
 
         <p className="font-body text-lg sm:text-xl text-ink-soft max-w-xl mx-auto mb-10 leading-relaxed">
-          Genera setups balanceados de Root respetando el sistema oficial de{" "}
-          <span className="italic font-semibold">Reach</span>. Tira los dados
-          o elige a mano. Que la próxima partida empiece más rápido.
+          {t("home_subtitle")}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -64,13 +75,13 @@ export default function HomePage() {
             href="/setup"
             className="press-effect bg-ink text-paper-light px-8 py-4 rounded-md font-ui font-medium text-lg shadow-card hover:shadow-card-hover hover:bg-ink-soft transition-all min-w-[240px]"
           >
-            Iniciar Partida
+            {t("home_cta_start")}
           </Link>
           <Link
             href="/factions"
             className="press-effect text-ink px-6 py-3 rounded-md font-ui hover:bg-paper-dark/40 transition-all"
           >
-            Ver facciones →
+            {t("home_cta_factions")}
           </Link>
         </div>
 
@@ -86,31 +97,28 @@ export default function HomePage() {
       {/* Features section */}
       <section className="px-4 py-12 sm:py-20 max-w-5xl mx-auto">
         <div className="deco-divider mb-12">
-          <span className="font-display italic">Qué hace</span>
+          <span className="font-display italic">{t("home_features_title")}</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
           {[
             {
               icon: "🎲",
-              title: "Aleatorio Balanceado",
-              desc: "Algoritmo que respeta el Reach mínimo según jugadores. Nunca te toca un setup roto.",
+              title: t("home_feature1_title"),
+              desc: t("home_feature1_desc"),
             },
             {
               icon: "♟",
-              title: "Draft por Turnos",
-              desc: "Pool ampliado para que cada jugador elija. Mantén el azar pero con control.",
+              title: t("home_feature2_title"),
+              desc: t("home_feature2_desc"),
             },
             {
               icon: "✦",
-              title: "Selección Manual",
-              desc: "Tú eliges. La app valida en vivo: Reach, militantes, exclusiones oficiales.",
+              title: t("home_feature3_title"),
+              desc: t("home_feature3_desc"),
             },
           ].map((f) => (
-            <div
-              key={f.title}
-              className="text-center p-2"
-            >
+            <div key={f.title} className="text-center p-2">
               <div className="text-3xl mb-3" aria-hidden>
                 {f.icon}
               </div>
@@ -125,9 +133,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Factions list */}
       <section className="px-4 py-12 max-w-3xl mx-auto">
         <div className="deco-divider mb-8">
-          <span className="font-display italic">Las 14 facciones</span>
+          <span className="font-display italic">{t("home_factions_title")}</span>
         </div>
 
         <div className="bg-paper-light/60 rounded-lg p-6 border border-ink/10">
@@ -157,19 +166,40 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-4 text-xs text-ink-muted font-body italic text-center">
-            Valores de Reach del Law of Root (3ª edición) y las expansiones
-            Riverfolk, Underworld, Marauder y Homeland.
+            {t("home_reach_note")}
           </p>
         </div>
       </section>
 
+      {/* Combinations CTA */}
+      <section className="px-4 py-8 max-w-3xl mx-auto">
+        <Link
+          href="/combinations"
+          className="block bg-paper-light/70 border border-ink/15 rounded-lg p-6 hover:shadow-card hover:border-ink/30 transition-all group"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="font-ui text-xs uppercase tracking-widest text-ink-muted mb-1">
+                {t("nav_combinations")}
+              </p>
+              <h3 className="font-display text-2xl text-ink group-hover:text-rust transition-colors">
+                {t("comb_title")} →
+              </h3>
+              <p className="font-body text-sm text-ink-soft mt-1">
+                {t("comb_subtitle")}
+              </p>
+            </div>
+            <div className="text-4xl shrink-0 opacity-40 group-hover:opacity-70 transition-opacity">
+              ⚙
+            </div>
+          </div>
+        </Link>
+      </section>
+
       <footer className="px-4 py-8 max-w-3xl mx-auto text-center font-ui text-xs text-ink-muted border-t border-ink/10">
-        <p className="mb-2">
-          Herramienta no oficial hecha por fans · Open source bajo licencia
-          MIT
-        </p>
+        <p className="mb-2">{t("home_footer_unofficial")}</p>
         <p>
-          Root es una marca de{" "}
+          {t("home_footer_trademark")}{" "}
           <a
             href="https://ledergames.com"
             target="_blank"
@@ -178,7 +208,7 @@ export default function HomePage() {
           >
             Leder Games
           </a>
-          . Esta app no está afiliada ni respaldada por ellos.
+          {t("home_footer_trademark2")}
         </p>
       </footer>
     </main>

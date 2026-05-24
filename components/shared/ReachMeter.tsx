@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n/context";
 
 interface ReachMeterProps {
   current: number;
@@ -15,6 +16,7 @@ export function ReachMeter({
   className,
   showLabels = true,
 }: ReachMeterProps) {
+  const { t } = useI18n();
   const max = Math.max(recommended * 1.4, current * 1.1, 30);
   const currentPercent = Math.min(100, (current / max) * 100);
   const recommendedPercent = Math.min(100, (recommended / max) * 100);
@@ -25,7 +27,7 @@ export function ReachMeter({
       {showLabels && (
         <div className="flex justify-between items-baseline mb-2 font-ui text-sm">
           <span className="text-ink-muted uppercase tracking-widest text-xs">
-            Reach Total
+            {t("reach_total")}
           </span>
           <span
             className={cn(
@@ -61,11 +63,9 @@ export function ReachMeter({
       {showLabels && (
         <div className="mt-1.5 text-xs font-ui text-ink-muted">
           {isBalanced ? (
-            <span className="text-moss">✓ Combinación balanceada</span>
+            <span className="text-moss">{t("reach_balanced")}</span>
           ) : (
-            <span className="text-rust">
-              ⚠ Por debajo del mínimo recomendado
-            </span>
+            <span className="text-rust">{t("reach_low")}</span>
           )}
         </div>
       )}

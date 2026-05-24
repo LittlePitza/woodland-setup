@@ -1,10 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { I18nProvider } from "@/lib/i18n/context";
 
 export const metadata: Metadata = {
   title: "Woodland Setup — A Companion for Root",
   description:
     "Open-source companion app for setting up balanced games of Root. Suggests faction combinations using the official Reach system.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -21,10 +28,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -45,7 +49,9 @@ export default function RootLayout({
           } as React.CSSProperties
         }
       >
-        <div className="relative z-10">{children}</div>
+        <I18nProvider>
+          <div className="relative z-10">{children}</div>
+        </I18nProvider>
       </body>
     </html>
   );

@@ -16,8 +16,10 @@ import { getMapsByExpansions, MAPS } from "@/lib/data/maps";
 import { saveSetup, generateSetupId } from "@/lib/storage/history";
 import type { Faction } from "@/types";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n/context";
 
 export function ResultsStep() {
+  const { lang, t } = useI18n();
   const {
     playerCount,
     expansions,
@@ -79,7 +81,7 @@ export function ResultsStep() {
       if (e instanceof NoValidCombinationError) {
         setError(e.message);
       } else {
-        setError("Error desconocido al generar la partida.");
+        setError(lang === "en" ? "Unknown error generating the game." : "Error desconocido al generar la partida.");
       }
     }
   }
@@ -114,14 +116,14 @@ export function ResultsStep() {
       <div className="space-y-6 text-center">
         <div className="text-5xl">⚠</div>
         <h2 className="font-display text-2xl text-ink">
-          No se pudo generar una partida válida
+          {t("setup_error_title")}
         </h2>
         <p className="font-body text-ink-soft max-w-md mx-auto">{error}</p>
         <button
           onClick={back}
           className="press-effect bg-ink text-paper-light px-6 py-3 rounded-md font-ui font-medium hover:bg-ink-soft transition-all"
         >
-          ← Revisar opciones
+          {t("setup_error_back")}
         </button>
       </div>
     );
@@ -194,14 +196,14 @@ export function ResultsStep() {
     <div className="space-y-6">
       <div className="text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-ink-muted font-ui mb-3">
-          Tu partida está lista
+          {t("setup_ready_label")}
         </p>
         <h2 className="font-display text-3xl sm:text-4xl text-ink mb-2">
-          El Bosque Espera
+          {t("setup_ready_title")}
         </h2>
         {selectedMap && (
           <p className="font-body text-ink-soft text-sm">
-            Mapa: <span className="font-semibold">{selectedMap.nameES}</span>
+            {t("setup_map")}: <span className="font-semibold">{lang === "en" ? selectedMap.name : selectedMap.nameES}</span>
           </p>
         )}
       </div>
@@ -236,12 +238,9 @@ export function ResultsStep() {
 
       <div className="bg-paper-dark/30 rounded-lg p-4 border border-ink/10 text-xs font-body text-ink-muted">
         <p className="font-ui font-semibold text-ink-soft uppercase tracking-widest mb-2">
-          Orden de Setup
+          {t("setup_order_title")}
         </p>
-        <p>
-          Cada facción tiene su orden oficial de setup. Configuren en este
-          orden de arriba abajo (Marquise siempre primero si está presente).
-        </p>
+        <p>{t("setup_order_desc")}</p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
@@ -249,7 +248,7 @@ export function ResultsStep() {
           onClick={handleReroll}
           className="press-effect flex-1 bg-paper-light border-2 border-ink/30 text-ink px-4 py-3 rounded-md font-ui font-medium hover:border-ink/60 transition-all"
         >
-          🎲 Re-tirar
+          {t("setup_reroll")}
         </button>
         <button
           onClick={handleSave}
@@ -261,7 +260,7 @@ export function ResultsStep() {
               : "bg-ink text-paper-light hover:bg-ink-soft hover:shadow-card-hover"
           )}
         >
-          {saved ? "✓ Guardada" : "Guardar partida"}
+          {saved ? t("setup_saved") : t("setup_save")}
         </button>
       </div>
 
@@ -270,20 +269,20 @@ export function ResultsStep() {
           onClick={back}
           className="press-effect text-ink px-4 py-3 rounded-md font-ui text-sm hover:bg-paper-dark/40 transition-all"
         >
-          ← Atrás
+          {t("setup_back")}
         </button>
         <Link
           href="/"
           onClick={() => reset()}
           className="press-effect text-center text-ink-muted px-4 py-3 rounded-md font-ui text-sm hover:bg-paper-dark/40 transition-all"
         >
-          Nueva partida
+          {t("setup_new")}
         </Link>
         <Link
           href="/history"
           className="press-effect text-center text-ink-muted px-4 py-3 rounded-md font-ui text-sm hover:bg-paper-dark/40 transition-all"
         >
-          Ver historial →
+          {t("setup_see_history")}
         </Link>
       </div>
     </div>
@@ -312,18 +311,19 @@ function ManualModeView({
   const validation = validateBalance(manualSelection, playerCount);
   const isComplete = manualSelection.length === playerCount;
   const canSave = isComplete && validation.errors.length === 0;
+  const { t } = useI18n();
 
   return (
     <div className="space-y-6">
       <div className="text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-ink-muted font-ui mb-3">
-          Selección Manual
+          {t("setup_manual_label")}
         </p>
         <h2 className="font-display text-3xl text-ink mb-2">
-          Elige las facciones
+          {t("setup_manual_title")}
         </h2>
         <p className="font-body text-ink-soft text-sm">
-          {manualSelection.length} de {playerCount} seleccionadas
+          {manualSelection.length} {t("setup_manual_of")} {playerCount} {t("setup_manual_selected")}
         </p>
       </div>
 
@@ -371,7 +371,7 @@ function ManualModeView({
           onClick={onBack}
           className="press-effect text-ink px-4 py-3 rounded-md font-ui hover:bg-paper-dark/40 transition-all"
         >
-          ← Atrás
+          {t("setup_back")}
         </button>
         <button
           onClick={onSave}
@@ -386,10 +386,10 @@ function ManualModeView({
           )}
         >
           {saved
-            ? "✓ Guardada"
+            ? t("setup_saved")
             : isComplete
-            ? "Guardar partida"
-            : `Selecciona ${playerCount - manualSelection.length} más`}
+            ? t("setup_save")
+            : `${t("setup_seleccion_x")} ${playerCount - manualSelection.length} ${t("setup_seleccion_mas")}`}
         </button>
       </div>
     </div>
@@ -418,6 +418,7 @@ function DraftModeView({
   const validation = validateBalance(picked, playerCount);
   const isComplete = picked.length === playerCount;
   const selectedMap = mapId ? MAPS.find((m) => m.id === mapId) : null;
+  const { lang, t } = useI18n();
 
   const togglePick = (id: string) => {
     if (picked.includes(id)) {
@@ -431,17 +432,17 @@ function DraftModeView({
     <div className="space-y-6">
       <div className="text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-ink-muted font-ui mb-3">
-          Draft Pool
+          {t("setup_draft_label")}
         </p>
         <h2 className="font-display text-3xl text-ink mb-2">
-          Elijan en orden de asiento
+          {t("setup_draft_title")}
         </h2>
         <p className="font-body text-ink-soft text-sm">
-          {picked.length} de {playerCount} elegidas · pool de {pool.length}
+          {picked.length} {t("setup_draft_of")} {playerCount} {t("setup_draft_chosen")} {pool.length}
         </p>
         {selectedMap && (
           <p className="font-body text-ink-muted text-xs mt-1">
-            Mapa: {selectedMap.nameES}
+            {t("setup_map")}: {lang === "en" ? selectedMap.name : selectedMap.nameES}
           </p>
         )}
       </div>
@@ -474,13 +475,13 @@ function DraftModeView({
           onClick={onBack}
           className="press-effect text-ink px-4 py-3 rounded-md font-ui hover:bg-paper-dark/40 transition-all"
         >
-          ← Atrás
+          {t("setup_back")}
         </button>
         <button
           onClick={onReroll}
           className="press-effect flex-1 bg-paper-light border-2 border-ink/30 text-ink px-4 py-3 rounded-md font-ui font-medium hover:border-ink/60 transition-all"
         >
-          🎲 Nuevo pool
+          {t("setup_new_pool")}
         </button>
         <button
           onClick={() => {
@@ -499,7 +500,7 @@ function DraftModeView({
               : "bg-ink/30 text-ink/50 cursor-not-allowed"
           )}
         >
-          {saved ? "✓ Guardada" : "Confirmar"}
+          {saved ? t("setup_saved") : t("setup_confirm")}
         </button>
       </div>
     </div>

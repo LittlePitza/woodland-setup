@@ -41,10 +41,11 @@ Cada facción tiene un valor numérico de _Reach_ (oficial del Law of Root). Par
 
 | Jugadores | Reach mínimo |
 | --------- | ------------ |
-| 2         | 21           |
+| 2         | 17           |
 | 3         | 18           |
-| 4         | 17           |
-| 5–6       | 17           |
+| 4         | 21           |
+| 5         | 25           |
+| 6         | 28           |
 
 Además, partidas de 2 jugadores requieren **2 militantes**, y reglas oficiales como la exclusión _Knaves of the Deepwood ↔ Vagabond_ son respetadas por el generador.
 

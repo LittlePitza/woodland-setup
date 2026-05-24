@@ -112,7 +112,7 @@ describe("validateBalance", () => {
     );
     expect(result.isBalanced).toBe(true);
     expect(result.totalReach).toBe(25);
-    expect(result.recommendedReach).toBe(17);
+    expect(result.recommendedReach).toBe(21);
     expect(result.errors).toEqual([]);
   });
 
@@ -126,7 +126,7 @@ describe("validateBalance", () => {
       ],
       4
     );
-    // Total 10, recommended 17, plus 0 militants -> error
+    // Total 10, recommended 21, plus 0 militants -> error
     expect(result.warnings.length).toBeGreaterThan(0);
     expect(result.errors.length).toBeGreaterThan(0);
   });
@@ -244,8 +244,10 @@ describe("generateBalancedSetup", () => {
 
 describe("Recommended reach values", () => {
   it("matches official Law of Root §5.2", () => {
-    expect(RECOMMENDED_REACH[2]).toBe(21);
+    expect(RECOMMENDED_REACH[2]).toBe(17);
     expect(RECOMMENDED_REACH[3]).toBe(18);
-    expect(RECOMMENDED_REACH[4]).toBe(17);
+    expect(RECOMMENDED_REACH[4]).toBe(21);
+    expect(RECOMMENDED_REACH[5]).toBe(25);
+    expect(RECOMMENDED_REACH[6]).toBe(28);
   });
 });
