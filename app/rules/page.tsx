@@ -344,11 +344,7 @@ function FactionSetupCard({ factionId }: { factionId: string }) {
                   {["fox","rabbit","mouse"].map(s => (
                     <span key={s} className="font-ui text-[10px] text-ink-muted flex items-center gap-1">
                       <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: SUIT_COLORS[s] }} />
-                      {s === "fox"
-                        ? (lang === "en" ? "Fox" : "Zorro")
-                        : s === "rabbit"
-                        ? (lang === "en" ? "Rabbit" : "Conejo")
-                        : (lang === "en" ? "Mouse" : "Ratón")}
+                      {s === "fox" ? "Fox" : s === "rabbit" ? "Rabbit" : "Mouse"}
                     </span>
                   ))}
                 </div>
@@ -422,11 +418,7 @@ function ClassicSetupMap() {
         {["fox","rabbit","mouse"].map(s => (
           <span key={s} className="flex items-center gap-1.5 text-ink-muted">
             <span className="w-3 h-3 rounded-full border-2" style={{ borderColor: SUIT_COLORS[s], backgroundColor: "transparent" }} />
-            {s === "fox"
-              ? (lang === "en" ? "Fox clearing" : "Claro Zorro")
-              : s === "rabbit"
-              ? (lang === "en" ? "Rabbit clearing" : "Claro Conejo")
-              : (lang === "en" ? "Mouse clearing" : "Claro Ratón")}
+            {s === "fox" ? "Fox" : s === "rabbit" ? "Rabbit" : "Mouse"}
           </span>
         ))}
       </div>
@@ -593,7 +585,10 @@ export default function RulesPage() {
                     : "bg-paper-light/60 text-ink-muted border-ink/20 hover:border-ink/40"
                 )}
               >
-                {exp === "base" ? "Base" : exp === "riverfolk" ? "Riverfolk" : exp === "underworld" ? "Underworld" : "Marauder"}
+                {exp === "base" ? "Base"
+                : exp === "riverfolk" ? (lang === "en" ? "Riverfolk" : "Los Ribereños")
+                : exp === "underworld" ? (lang === "en" ? "Underworld" : "Los Subterráneos")
+                : (lang === "en" ? "Marauder" : "Los Merodeadores")}
               </button>
             ))}
           </div>
