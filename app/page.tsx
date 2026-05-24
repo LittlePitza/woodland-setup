@@ -6,7 +6,7 @@ import { useI18n } from "@/lib/i18n/context";
 import { LangToggle } from "@/components/shared/LangToggle";
 
 export default function HomePage() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const symbolRow = FACTIONS.slice(0, 7).map((f) => f.symbol);
   const symbolRow2 = FACTIONS.slice(7, 14).map((f) => f.symbol);
 
@@ -24,6 +24,12 @@ export default function HomePage() {
           Woodland Setup
         </div>
         <div className="flex items-center gap-3 text-sm font-ui">
+          <Link
+            href="/rules"
+            className="text-ink-muted hover:text-ink transition-colors hidden sm:inline"
+          >
+            {lang === "en" ? "Rules" : "Reglas"}
+          </Link>
           <Link
             href="/combinations"
             className="text-ink-muted hover:text-ink transition-colors hidden sm:inline"
