@@ -259,7 +259,8 @@ function FactionSetupCard({ factionId }: { factionId: string }) {
   const setup = FACTION_SETUPS.find(s => s.factionId === factionId);
   if (!faction || !setup) return null;
 
-  const name = lang === "en" ? faction.name : faction.nameES;
+  // Root has no official Spanish translation — faction names stay in English
+  const name = faction.name;
   const startingClearing = lang === "en" ? setup.startingClearingEN : setup.startingClearingES;
 
   const isAdvanced = tab === "advanced";

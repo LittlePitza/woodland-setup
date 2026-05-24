@@ -49,7 +49,7 @@ export const FACTION_SETUPS: FactionSetup[] = [
       "Coloca 1 Roost en el claro de esquina opuesto al Keep del Marquesado.",
       "Coloca 6 guerreros en ese mismo claro.",
       "Elige un líder de los 4 disponibles y ponlo boca arriba.",
-      "Tuck 2 Loyal Vizier cards into the Decree columns as shown.",
+      "Tuck tus 2 Loyal Vizier cards en las columnas del Decreto como se indica en tu tablero.",
     ],
     standardEN: [
       "Place 6 Roosts on your faction board (supply).",
@@ -92,11 +92,11 @@ export const FACTION_SETUPS: FactionSetup[] = [
   },
   {
     factionId: "vagabond",
-    startingClearingES: "Cualquier claro de bosque (forest)",
+    startingClearingES: "Cualquier espacio de bosque del mapa",
     startingClearingEN: "Any forest space on the map",
     standardES: [
-      "Elige un Vagabond character card y colócala en tu tablero.",
-      "Toma los ítems iniciales indicados en tu character card.",
+      "Elige una carta de personaje (character card) y colócala en tu tablero.",
+      "Toma los objetos iniciales indicados en tu carta de personaje.",
       "Coloca tu peón en cualquier espacio de bosque del mapa.",
       "Roba 1 carta de misión (Quest) si está disponible.",
     ],
@@ -107,7 +107,7 @@ export const FACTION_SETUPS: FactionSetup[] = [
       "Draw 1 Quest card if available.",
     ],
     advancedES: [
-      "El Vagabundo elige su forest después de que todos los demás hayan colocado sus piezas iniciales.",
+      "El Vagabundo elige su espacio de bosque después de que todos los demás hayan colocado sus piezas iniciales.",
     ],
     advancedEN: [
       "The Vagabond chooses their forest after all other players have placed their starting pieces.",
@@ -118,7 +118,7 @@ export const FACTION_SETUPS: FactionSetup[] = [
     startingClearingES: "Sin claro inicial — coloca Puestos al inicio",
     startingClearingEN: "No corner clearing — places Trade Posts at start",
     standardES: [
-      "Coloca 1 guerrero en cada claro con río (river clearing).",
+      "Coloca 1 guerrero en cada claro que toque el río.",
       "Establece tus precios: pon marcadores de precio en Mercenaries, Cards y River.",
       "No coloques Trade Posts al inicio; se colocan durante la partida.",
     ],
@@ -157,7 +157,7 @@ export const FACTION_SETUPS: FactionSetup[] = [
   },
   {
     factionId: "underground-duchy",
-    startingClearingES: "La Madriguera (Burrow) — no es un claro del mapa",
+    startingClearingES: "La Madriguera — no es un claro del mapa",
     startingClearingEN: "The Burrow — not a map clearing",
     standardES: [
       "Coloca tu Burrow token en el espacio de Burrow de tu tablero.",
