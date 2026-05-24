@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { I18nProvider } from "@/lib/i18n/context";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Woodland Setup — A Companion for Root",
@@ -52,6 +53,7 @@ export default function RootLayout({
         <I18nProvider>
           <div className="relative z-10">{children}</div>
         </I18nProvider>
+        <Analytics />
       </body>
     </html>
   );
