@@ -2,24 +2,30 @@
 
 import { useWizardStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { RECOMMENDED_REACH } from "@/lib/balance/reach";
+import { useI18n } from "@/lib/i18n/context";
 
 const COUNTS = [2, 3, 4, 5, 6];
 
 export function PlayerCountStep() {
   const { playerCount, setPlayerCount, next } = useWizardStore();
+  const { t, lang } = useI18n();
+
+  const reach = RECOMMENDED_REACH[playerCount] ?? 17;
 
   return (
     <div className="space-y-8">
       <div className="text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-ink-muted font-ui mb-3">
-          Paso 1 de 4
+          {t("setup_step1_label")}
         </p>
         <h2 className="font-display text-3xl sm:text-4xl text-ink mb-2">
-          ¿Cuántos jugadores?
+          {t("setup_step1_title")}
         </h2>
         <p className="font-body text-ink-soft max-w-md mx-auto text-sm sm:text-base">
-          Root soporta entre 2 y 6 jugadores. El número determina el Reach
-          mínimo recomendado.
+          {lang === "en"
+            ? "Root supports 2 to 6 players. The number determines the recommended minimum Reach."
+            : "Root soporta entre 2 y 6 jugadores. El número determina el Reach mínimo recomendado."}
         </p>
       </div>
 
@@ -43,7 +49,7 @@ export function PlayerCountStep() {
                 {n}
               </span>
               <span className="text-[10px] uppercase tracking-widest font-ui opacity-80">
-                {n === 1 ? "jugador" : "jugadores"}
+                {lang === "en" ? (n === 1 ? "player" : "players") : (n === 1 ? "jugador" : "jugadores")}
               </span>
             </button>
           );
@@ -52,15 +58,18 @@ export function PlayerCountStep() {
 
       <div className="bg-paper-dark/40 rounded-lg p-4 border border-ink/10 text-sm font-body text-ink-soft">
         <p>
-          <span className="font-semibold">Reach recomendado para {playerCount}:</span>{" "}
+          <span className="font-semibold">
+            {lang === "en" ? `Recommended Reach for ${playerCount}:` : `Reach recomendado para ${playerCount}:`}
+          </span>{" "}
           <span className="font-display text-lg font-bold text-rust">
-            {playerCount === 2 ? 21 : playerCount === 3 ? 18 : 17}+
+            {reach}+
           </span>
         </p>
         {playerCount === 2 && (
           <p className="mt-1 text-xs text-ink-muted">
-            En partidas de 2, se recomiendan 2 facciones militantes para
-            generar conflicto.
+            {lang === "en"
+              ? "In 2-player games, 2 militant factions are recommended to generate conflict."
+              : "En partidas de 2, se recomiendan 2 facciones militantes para generar conflicto."}
           </p>
         )}
       </div>
@@ -70,7 +79,7 @@ export function PlayerCountStep() {
           onClick={next}
           className="press-effect bg-rust text-paper-light px-6 py-3 rounded-md font-ui font-medium shadow-card hover:shadow-card-hover hover:bg-ember transition-all"
         >
-          Continuar →
+          {lang === "en" ? "Continue →" : "Continuar →"}
         </button>
       </div>
     </div>

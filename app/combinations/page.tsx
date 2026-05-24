@@ -211,7 +211,11 @@ export default function CombinationsPage() {
           Woodland Setup
         </Link>
         <div className="flex items-center gap-3 font-ui text-sm">
-          <Link href="/setup" className="text-ink-muted hover:text-ink transition-colors hidden sm:inline">
+          <Link href="/rules" className="text-ink-muted hover:text-ink transition-colors hidden sm:inline">
+            {lang === "en" ? "Rules" : "Reglas"}
+          </Link>
+          <Link
+            href="/setup" className="text-ink-muted hover:text-ink transition-colors hidden sm:inline">
             {t("home_cta_start")}
           </Link>
           <Link href="/history" className="text-ink-muted hover:text-ink transition-colors">
