@@ -1,38 +1,41 @@
+"use client";
+
 import Link from "next/link";
 import { FACTIONS } from "@/lib/data/factions";
 import { EXPANSIONS } from "@/lib/data/expansions";
 import { FactionCard } from "@/components/factions/FactionCard";
+import { useI18n } from "@/lib/i18n/context";
+import { LangToggle } from "@/components/shared/LangToggle";
 
 export default function FactionsPage() {
+  const { lang } = useI18n();
+
   return (
     <main className="min-h-screen px-4 py-6 sm:py-10 max-w-3xl mx-auto">
       <header className="mb-8 flex items-center justify-between">
-        <Link
-          href="/"
-          className="font-display text-xl text-ink hover:text-rust transition-colors"
-        >
+        <Link href="/" className="font-display text-xl text-ink hover:text-rust transition-colors">
           <span className="text-bark mr-2">❦</span>
           Woodland Setup
         </Link>
-        <Link
-          href="/setup"
-          className="font-ui text-sm text-rust hover:text-ember transition-colors"
-        >
-          Iniciar partida →
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/setup" className="font-ui text-sm text-rust hover:text-ember transition-colors">
+            {lang === "en" ? "Start game →" : "Iniciar partida →"}
+          </Link>
+          <LangToggle />
+        </div>
       </header>
 
       <div className="mb-10 text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-ink-muted font-ui mb-2">
-          Glosario
+          {lang === "en" ? "Glossary" : "Glosario"}
         </p>
         <h1 className="font-display text-4xl text-ink">
-          Las 14 facciones del Bosque
+          {lang === "en" ? "All 14 Woodland Factions" : "Las 14 facciones del Bosque"}
         </h1>
         <p className="font-body text-ink-soft mt-3 max-w-xl mx-auto">
-          Cada facción tiene un valor de <em>Reach</em> que indica su impacto
-          en el tablero. Las facciones <strong>militantes</strong> ocupan
-          espacio; las <strong>insurgentes</strong> juegan más sutil.
+          {lang === "en"
+            ? <>Each faction has a <em>Reach</em> value indicating its board impact. <strong>Militant</strong> factions occupy space; <strong>insurgent</strong> ones play more subtly.</>
+            : <>Cada facción tiene un valor de <em>Reach</em> que indica su impacto en el tablero. Las facciones <strong>militantes</strong> ocupan espacio; las <strong>insurgentes</strong> juegan más sutil.</>}
         </p>
       </div>
 
@@ -42,10 +45,8 @@ export default function FactionsPage() {
           <section key={exp.id} className="mb-12">
             <div className="deco-divider mb-6">
               <span className="font-display italic text-ink-soft">
-                {exp.nameES}{" "}
-                <span className="text-ink-muted text-sm not-italic">
-                  · {exp.year}
-                </span>
+                {lang === "en" ? exp.name : exp.nameES}{" "}
+                <span className="text-ink-muted text-sm not-italic">· {exp.year}</span>
               </span>
             </div>
             <div className="space-y-3">
