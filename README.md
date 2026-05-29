@@ -1,4 +1,6 @@
-# 🌲 Woodland Setup
+# Woodland Setup
+
+Pagina : https://woodland-setup.vercel.app/
 
 > Asistente open-source para preparar partidas balanceadas de [Root](https://ledergames.com/products/root-a-game-of-woodland-might-and-right) (Leder Games).
 
@@ -9,11 +11,11 @@ Una webapp mobile-first hecha para ayudar a grupos de jugadores de Root a:
 - **Validar selecciones manuales** en tiempo real (Reach, militantes, exclusiones).
 - **Guardar historial** de partidas en el dispositivo.
 
-🌐 Soporta las **14 facciones oficiales** (Base + Riverfolk + Underworld + Marauder + Homeland).
+Soporta las **14 facciones oficiales** (Base + Riverfolk + Underworld + Marauder + Homeland).
 
 ---
 
-## 🚀 Stack
+## Stack
 
 - **Next.js 14** (App Router) + **TypeScript**
 - **Tailwind CSS** con paleta otoñal personalizada
@@ -24,7 +26,7 @@ Una webapp mobile-first hecha para ayudar a grupos de jugadores de Root a:
 
 ---
 
-## 🛠 Desarrollo
+## Desarrollo
 
 ```bash
 npm install
@@ -35,7 +37,7 @@ npm run build     # build de producción
 
 ---
 
-## 🎯 El sistema de Reach
+## El sistema de Reach
 
 Cada facción tiene un valor numérico de _Reach_ (oficial del Law of Root). Para un setup balanceado, la suma debe alcanzar:
 
@@ -51,7 +53,7 @@ Además, partidas de 2 jugadores requieren **2 militantes**, y reglas oficiales 
 
 ---
 
-## 📜 Licencia
+## Licencia
 
 MIT. Ver [`LICENSE`](LICENSE).
 
@@ -59,11 +61,7 @@ MIT. Ver [`LICENSE`](LICENSE).
 
 ---
 
-## 🌰 Roadmap
 
-- [x] MVP — wizard de 4 pasos, generador aleatorio, validador, historial
-- [x] Las 14 facciones tipadas con datos oficiales
-- [x] Tests del algoritmo (23 casos)
 - [ ] Modo guiado por nivel de experiencia más fino
 - [ ] PWA installable
 - [ ] i18n (Español/Inglés)
